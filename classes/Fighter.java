@@ -5,7 +5,7 @@
 
 import java.util.Random;
 
-public class Fighter
+public abstract class Fighter
 {
 	/* Attributes */
 	
@@ -211,12 +211,17 @@ public class Fighter
 		return number;
 	}
 	
+	 /* End of Getters and Setters */
+	
+	//checks if the fighter dies
+	public abstract void checkDeath ();
+
 	//call this function when a fighter dies to subtract 1 from number
 	public void die ()
 	{
 		number --;
 	}
-	 /* End of Getters and Setters */
+
 	
 	@Override
 	public String toString ()
@@ -227,6 +232,11 @@ public class Fighter
 				"Endurance: " + getEnd() + "\n" +
 				"Intelligance: " + getItl());
 	}
+	
+	//this method compares attributes between two fighters and return a boolean as the result;
+	//true means that the fighter that calls this method has won and vice versa
+	public abstract boolean compete (Fighter op);
+	
 	
 //	public static void main (String[] args)
 //	{
