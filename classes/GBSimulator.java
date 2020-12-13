@@ -25,7 +25,6 @@ public class GBSimulator
 
 	public static void main(String[] args)
 	{
-//		Fighter[] fighters = generateRecruits();
 //		fillWithGladiators(3);
 //		for (int i = 0; i < 3; i ++)
 //		{
@@ -82,10 +81,18 @@ public class GBSimulator
 		recruits = newRecruits;
 	}
 	
+	/* train a gladiator */
+	public static void train (Fighter f)
+	{
+		f.train();
+		gold -= 50;
+	}
+	
 	/* recruit one of the three recruits */
 	public static void recruit (int num)
 	{
 		addFighter(recruits[num]);
+		gold -= 100;
 	}
 	
 	/*
