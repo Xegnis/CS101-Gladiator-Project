@@ -38,15 +38,6 @@ public class Gladiator extends Fighter
 		this.deathRate = defaultDeathRate;
 	}
 	
-	/*
-	 * for writing and reading data
-	 * directly assign values to create a Gladiator object 
-	 */
-	public Gladiator (String name, double str, double agl, double end, double itl, double deathRate)
-	{
-		super(name, str, agl, end, itl);
-		this.deathRate = deathRate;
-	}
 	
 	public double getDeathRate ()
 	{
@@ -78,6 +69,33 @@ public class Gladiator extends Fighter
 				"Endurance: " + getEnd() + "\n" +
 				"Intelligance: " + getItl());
 	}
+	
+	/*
+	 * for writing and reading data
+	 * directly assign values to create a Gladiator object 
+	 */
+	public Gladiator (String name, double str, double agl, double end, double itl, double deathRate)
+	{
+		super(name, str, agl, end, itl);
+		this.deathRate = deathRate;
+	}
+
+	/*
+	 * for writing and reading data
+	 * return a string of data representing the gladiator 
+	 */
+	public static String getData (Gladiator g)
+	{
+		String data = "";
+		data += g.getName() + "\t";
+		data += g.getStr() + "\t";
+		data += g.getAgl() + "\t";
+		data += g.getEnd() + "\t";
+		data += g.getItl() + "\t";
+		data += g.getDeathRate() + "\n";
+		return data;
+	}
+	
 
 //	public static void main(String[] args)
 //	{
