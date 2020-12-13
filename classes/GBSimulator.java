@@ -9,9 +9,11 @@ public class GBSimulator
 	static int maxFighter = 10;
 	static int initialGold = 500;
 	
+	/* data that should be stored */
 	static Fighter [] fighters = new Fighter[maxFighter];
 	static int number;
 	static int gold = initialGold;
+	/* end */
 	
 	static String log = "";
 

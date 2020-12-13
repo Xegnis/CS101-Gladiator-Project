@@ -11,17 +11,10 @@ public class Gladiator extends Fighter
 	private int price;
 	
 	private double defaultDeathRate = 0.75;
-	private static double defaultStd = 1.0;
 	
 	public Gladiator ()
 	{
-		super(new String("default"), 5.0, 5.0, 5.0, 5.0);
-		this.deathRate = defaultDeathRate;
-	}
-	
-	public Gladiator (String name)
-	{
-		super(name, 5.0, 5.0, 5.0, 5.0);
+		super(5.0, 5.0, 5.0, 5.0);
 		this.deathRate = defaultDeathRate;
 	}
 	
@@ -29,9 +22,9 @@ public class Gladiator extends Fighter
 	 * create a Gladiator object with attributes normally distributed
 	 * with the designated values as means and a standard deviation of defaultStd;
 	*/
-	public Gladiator (String name, double str, double agl, double end, double itl)
+	public Gladiator (double str, double agl, double end, double itl)
 	{
-		super(name, str, agl, end, itl);
+		super(str, agl, end, itl);
 		this.deathRate = defaultDeathRate;
 	}
 	
@@ -39,9 +32,9 @@ public class Gladiator extends Fighter
 	 * create a Gladiator object with attributes normally distributed
 	 * with the designated values as means and a standard deviation of std
 	*/
-	public Gladiator (String name, double str, double agl, double end, double itl, double std)
+	public Gladiator (double str, double agl, double end, double itl, double std)
 	{
-		super(name, str, agl, end, itl, std);
+		super(str, agl, end, itl, std);
 		this.deathRate = defaultDeathRate;
 	}
 	
