@@ -43,8 +43,23 @@ public class GBSimulator
 		Fighter [] recruits = new Fighter[number];
 		for (int i = 0; i < number; i ++)
 		{
-			//TODO have a random chance of generating high-class gladiators
-			recruits[i] = new Gladiator();
+			double roll = Math.random();
+			if (roll < 0.05)
+			{
+				recruits[i] = new Hoplomachus();
+			}
+			else if (roll < 0.1)
+			{
+				recruits[i] = new Secutor();
+			}
+			else if (roll < 0.15)
+			{
+				recruits[i] = new Rudiarius();
+			}
+			else
+			{
+				recruits[i] = new Gladiator();
+			}
 		}
 		return recruits;
 	}
@@ -90,8 +105,7 @@ public class GBSimulator
 		//TODO throw an exception if number is out of range?
 	}
 	
-	/*remove a Fighter from fighters and bring the following entries forward
-	 */
+	/*remove a Fighter from fighters and bring the following entries forward */
 	public static void removeFighter (Fighter f)
 	{
 		fighters[Arrays.binarySearch(fighters, f)] = null;
