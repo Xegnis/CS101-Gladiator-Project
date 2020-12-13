@@ -3,6 +3,7 @@
  */
 
 import java.util.*;
+import java.io.*;
 
 public class GBSimulator
 {
@@ -11,8 +12,25 @@ public class GBSimulator
 	
 	/* data that should be stored */
 	static Fighter [] fighters = new Fighter[maxFighter];
+	
+	String[] fighterData = new String[maxFighter];
+	
+	public void checkFighterData()
+	{
+		for (int i = 0; i < fighters.length; i++)
+		{
+			fighterData[i] = fighters[i].getData;
+		}
+	)
+	
+	checkFighterData();
+	WriteToTabDelimitedFile(fighterData, "fighterData.txt");
+	
 	static int number;
 	static int gold = initialGold;
+	
+	double[] genData = {number, gold};
+	WriteToTabDelimitedFile(genData, "genData.txt");
 	/* end */
 	
 	static String log = "";
@@ -80,6 +98,7 @@ public class GBSimulator
 			writeToLog(f2.getName() + " died.");
 		}
 		gold += Fighter.winGold(f1, f2);
+		appendToTabDelimitedFile(genData, "genData.txt");
 	}
 	
 	/* concatenate message to log */
@@ -101,6 +120,9 @@ public class GBSimulator
 		{
 			fighters[number] = f;
 			number ++;
+			checkFighterData();
+			appendToTabDelimitedFile(fighterData, "fighterData.txt");
+			appendToTabDelimitedFile(genData, "genData.txt");
 		}
 		//TODO throw an exception if number is out of range?
 	}
@@ -120,6 +142,9 @@ public class GBSimulator
 				fighters[i] = fighters[i + 1];
 			}
 		}
+		checkFighterData();
+		appendToTabDelimitedFile(fighterData, "fighterData.txt");
+		appendToTabDelimitedFile(genData, "genData.txt");
 	}
 	
 	public static boolean WriteToTabDelimitedFile(String[] data, String FileName)
