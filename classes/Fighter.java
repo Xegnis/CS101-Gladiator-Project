@@ -20,10 +20,9 @@ public abstract class Fighter
 	
 	private String name;
 	
-	private static int number = 0;
 	private static double defaultStd = 1.0;
 	
-	private Random normal = new Random();
+	private static Random normal = new Random();
 
 	/* Constructors */
 	
@@ -43,7 +42,6 @@ public abstract class Fighter
 		this.agl = roundAtr(agl + normal.nextGaussian() * defaultStd);
 		this.end = roundAtr(end + normal.nextGaussian() * defaultStd);
 		this.itl = roundAtr(itl + normal.nextGaussian() * defaultStd);
-		number ++;
 	}
 	
 	/*
@@ -57,7 +55,6 @@ public abstract class Fighter
 		this.agl = roundAtr(agl + normal.nextGaussian() * std);
 		this.end = roundAtr(end + normal.nextGaussian() * std);
 		this.itl = roundAtr(itl + normal.nextGaussian() * std);
-		number ++;
 	}
 	
 	/* Behaviors */
@@ -206,22 +203,7 @@ public abstract class Fighter
 		this.name = name;
 	}
 	
-	public static int getNumber ()
-	{
-		return number;
-	}
-	
 	 /* End of Getters and Setters */
-	
-	//checks if the fighter dies
-	public abstract void checkDeath ();
-
-	//call this function when a fighter dies to subtract 1 from number
-	public void die ()
-	{
-		number --;
-	}
-
 	
 	@Override
 	public String toString ()
@@ -233,9 +215,47 @@ public abstract class Fighter
 				"Intelligance: " + getItl());
 	}
 	
-	//this method compares attributes between two fighters and return a boolean as the result;
-	//true means that the fighter that calls this method has won and vice versa
-	public abstract boolean compete (Fighter op);
+	/*this method compares attributes between two fighters and return the result as an array of Fighters
+	 * the Fighter at index 0 is the winner and the other at index 1 is the loser
+	 */
+	public static Fighter [] compete (Fighter f1, Fighter f2)
+	{
+ 
+		double randomFactor = 0.2;
+ 
+		double selfPerformance = f1.getStr() * f1.getAgl() * f1.getEnd() * f1.getItl() *(1 + randomFactor * normal.nextGaussian());
+		double opponentPerformance = f2.getStr() * f2.getAgl() * f2.getEnd() * f2.getItl() *(1 + randomFactor * normal.nextGaussian());
+ 
+		if (selfPerformance > opponentPerformance)
+		{
+			Fighter [] result = {f1, f2};
+			return result;
+		}
+		else
+		{
+			Fighter [] result = {f2, f1};
+			return result;
+		}
+	}
+	
+	/*
+	 * returns the amount of gold won between 
+	 */
+	public static int winGold (Fighter f1, Fighter f2)
+	{
+		double randomFactor = 0.1;
+		int baseGold = 100;
+	 
+		double selfPerformance = f1.getStr() * f1.getAgl() * f1.getEnd() * f1.getItl();
+		double opponentPerformance = f2.getStr() * f2.getAgl() * f2.getEnd() * f2.getItl();
+		
+		/*
+		 * profit is increased when fighters are more skilled and when they are more closely matched
+		 */
+		
+		int gold = (int)((1 + randomFactor * normal.nextGaussian()) * baseGold * (selfPerformance + opponentPerformance) / (1 + Math.abs(selfPerformance - opponentPerformance)));
+		return gold;
+	}
 	
 	
 //	public static void main (String[] args)

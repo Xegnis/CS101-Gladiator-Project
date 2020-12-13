@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /*
  * Extends the Fighter class
  * Gladiator is the most basic fighting unit; can upgrade to higher-level units
@@ -6,8 +8,8 @@
 public class Gladiator extends Fighter
 {
 	private double deathRate;
+	private int price;
 	
-	private static int number = 0;
 	private double defaultDeathRate = 0.75;
 	private static double defaultStd = 1.0;
 	
@@ -31,7 +33,6 @@ public class Gladiator extends Fighter
 	{
 		super(name, str, agl, end, itl);
 		this.deathRate = defaultDeathRate;
-		number ++;
 	}
 	
 	/*
@@ -42,29 +43,26 @@ public class Gladiator extends Fighter
 	{
 		super(name, str, agl, end, itl, std);
 		this.deathRate = defaultDeathRate;
-		number ++;
 	}
 	
-	public boolean compete (Fighter op)
+	public double getDeathRate ()
 	{
-		/*
-		 * TODO: develop an algorithm that compares attributes between this gladiator and another fighter using the four attributes
-		 * true means that the fighter that calls this method has won and vice versa
-		 * calls checkDeath() for the losing fighter
-		 */
-		return true;
+		return this.deathRate;
 	}
 	
-	public void checkDeath ()
+	public void setDeathRate (double deathRate)
 	{
-		if (Math.random() < deathRate)
-		{
-			this.die();
-		}
-		else
-		{
-			return;
-		}
+		this.deathRate = deathRate;
+	}
+	
+	public int getPrice ()
+	{
+		return this.price;
+	}
+	
+	public void setPrice (int price)
+	{
+		this.price = price;
 	}
 	
 	@Override
