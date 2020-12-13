@@ -63,6 +63,19 @@ public abstract class Fighter
 		this.itl = roundAtr(itl + normal.nextGaussian() * std);
 	}
 	
+	/*
+	 * for writing and reading data
+	 * directly assign values to create a Fighter object 
+	 */
+	public Fighter (String name, double str, double agl, double end, double itl)
+	{
+		this.name = name;
+		this.str = str;
+		this.agl = agl;
+		this.end = end;
+		this.itl = itl;
+	}
+	
 	/* Behaviors */
 	
 	//contain and round doubles to 1 decimal place and for attribute use

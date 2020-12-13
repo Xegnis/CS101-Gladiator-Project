@@ -10,7 +10,7 @@ public class Gladiator extends Fighter
 	private double deathRate;
 	private int price;
 	
-	private double defaultDeathRate = 0.75;
+	private static double defaultDeathRate = 0.75;
 	
 	public Gladiator ()
 	{
@@ -36,6 +36,16 @@ public class Gladiator extends Fighter
 	{
 		super(str, agl, end, itl, std);
 		this.deathRate = defaultDeathRate;
+	}
+	
+	/*
+	 * for writing and reading data
+	 * directly assign values to create a Gladiator object 
+	 */
+	public Gladiator (String name, double str, double agl, double end, double itl, double deathRate)
+	{
+		super(name, str, agl, end, itl);
+		this.deathRate = deathRate;
 	}
 	
 	public double getDeathRate ()
