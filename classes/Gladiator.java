@@ -84,17 +84,19 @@ public class Gladiator extends Fighter
 	 * for writing and reading data
 	 * return a string of data representing the gladiator 
 	 */
-	public static String getData (Gladiator g)
+	public String getData ()
 	{
 		String data = "";
-		data += g.getName() + "\t";
-		data += g.getStr() + "\t";
-		data += g.getAgl() + "\t";
-		data += g.getEnd() + "\t";
-		data += g.getItl() + "\t";
-		data += g.getDeathRate() + "\n";
+		data += this.getName() + "\t";
+		data += "Gladiator\t";
+		data += this.getStr() + "\t";
+		data += this.getAgl() + "\t";
+		data += this.getEnd() + "\t";
+		data += this.getItl() + "\t";
+		data += this.getDeathRate();
 		return data;
 	}
+
 	
 
 //	public static void main(String[] args)

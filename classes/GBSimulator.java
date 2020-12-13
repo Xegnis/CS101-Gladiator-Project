@@ -13,31 +13,26 @@ public class GBSimulator
 	/* data that should be stored */
 	static Fighter [] fighters = new Fighter[maxFighter];
 	
-	String[] fighterData = new String[maxFighter];
-	
-	public void checkFighterData()
-	{
-		for (int i = 0; i < fighters.length; i++)
-		{
-			fighterData[i] = fighters[i].getData;
-		}
-	)
-	
-	checkFighterData();
-	WriteToTabDelimitedFile(fighterData, "fighterData.txt");
-	
-	static int number;
+	static int number = 0;
 	static int gold = initialGold;
 	
-	double[] genData = {number, gold};
-	WriteToTabDelimitedFile(genData, "genData.txt");
+	static String[] fighterData = new String[maxFighter];
+	static String[] genData = new String[2];
 	/* end */
 	
 	static String log = "";
 
 	public static void main(String[] args)
 	{
-		
+//		Fighter[] fighters = generateRecruits();
+		fillWithGladiators(3);
+//		for (int i = 0; i < 3; i ++)
+//		{
+//			System.out.println(fighters[i]);
+//		}
+		clearLog();
+		System.out.println(Arrays.toString(readFromTabDelimitedFile("GenData.txt")));
+		System.out.println(Arrays.toString(readFromTabDelimitedFile("FighterData.txt")));
 	}
 	
 	/*
@@ -56,8 +51,9 @@ public class GBSimulator
 	 * return an array of randomly generated Fighters
 	 * have a chance of generating high-class gladiators
 	 */
-	public static Fighter [] generateRecruits (int number)
+	public static Fighter [] generateRecruits ()
 	{
+		int number = 3;
 		Fighter [] recruits = new Fighter[number];
 		for (int i = 0; i < number; i ++)
 		{
@@ -98,7 +94,23 @@ public class GBSimulator
 			writeToLog(f2.getName() + " died.");
 		}
 		gold += Fighter.winGold(f1, f2);
-		appendToTabDelimitedFile(genData, "genData.txt");
+	}
+	
+	/* store information about gladiators in fighters to fighterData[] */
+	public static void logFighterData ()
+	{
+		for (int i = 0; i < fighters.length; i++)
+		{
+			if (fighters[i] != null)
+				fighterData[i] = ((Gladiator)fighters[i]).getData();
+		}
+	}
+	
+	/* store general information to genData[] */
+	public static void logGenData ()
+	{
+		genData[0] = String.valueOf(number);
+		genData[1] = String.valueOf(gold);
 	}
 	
 	/* concatenate message to log */
@@ -107,11 +119,48 @@ public class GBSimulator
 		log += message;
 	}
 	
-	/* clear log */
+	/* clear log and write data to file*/
 	public static void clearLog ()
 	{
-		log = "";
+		logGenData();
+		logFighterData();
+		if (writeToTabDelimitedFile(genData, "GenData.txt") && writeToTabDelimitedFile(fighterData, "FighterData.txt"))
+		{
+			log = "";
+		}
 	}
+	
+	/* convert all written data back into program data */
+//	public static void readData ()
+//	{
+//		String [] genData = readFromTabDelimitedFile("GenData.txt");
+//		String [] fighterData = readFromTabDelimitedFile("FighterData.txt");
+//		
+//		for (int i = 0; i < maxFighter; i ++)
+//		{
+//			if (!(fighterData[i].equals("null")))
+//			{
+//				String [] data = fighterData[i].split("\t");
+//				if (data[1].equals("Hoplomachus"))
+//				{
+//					addFighter(new Hoplomachus(data[0], Integer.parseInt(data[2]), Integer.parseInt(data[3]), 
+//								Integer.parseInt(data[4], Integer.parseInt(data[5], Integer.parseInt(data[6]));
+//				}
+//				else if (data[1].equals("Secutor"))
+//				{
+//					
+//				}
+//				else if (data[1].equals("Rudiarius"))
+//				{
+//					
+//				}
+//				else
+//				{
+//					
+//				}
+//			}
+//		}
+//	}
 	
 	/* use this method to add a fighter to fighters */
 	public static void addFighter(Fighter f)
@@ -120,11 +169,7 @@ public class GBSimulator
 		{
 			fighters[number] = f;
 			number ++;
-			checkFighterData();
-			appendToTabDelimitedFile(fighterData, "fighterData.txt");
-			appendToTabDelimitedFile(genData, "genData.txt");
 		}
-		//TODO throw an exception if number is out of range?
 	}
 	
 	/*remove a Fighter from fighters and bring the following entries forward */
@@ -142,20 +187,18 @@ public class GBSimulator
 				fighters[i] = fighters[i + 1];
 			}
 		}
-		checkFighterData();
-		appendToTabDelimitedFile(fighterData, "fighterData.txt");
-		appendToTabDelimitedFile(genData, "genData.txt");
+		number --;
 	}
 	
-	public static boolean WriteToTabDelimitedFile(String[] data, String FileName)
+	public static boolean writeToTabDelimitedFile(String[] data, String FileName)
 	{
 		try
 		{
 			FileWriter fileWritter = new FileWriter(FileName);
 			BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
-			// loop through all your data and print it to the file
+
 			for (int i=0;i< data.length;i++)
-					bufferWritter.write(data[i]+"\t");
+					bufferWritter.write(data[i]+"\n");
 			bufferWritter.write("\n");
 			bufferWritter.close();
 		}
@@ -172,12 +215,12 @@ public class GBSimulator
 		try
 		{
 			File file =new File(FileName);
-			if(!file.exists()) //if file doesn’t exists, return false
+			if(!file.exists()) //if file does not exists, return false
 				return false;
 			FileWriter fileWritter = new FileWriter(file.getName(),true);
 			BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
 			for (int i=0;i< data.length;i++)
-				bufferWritter.write(data[i]+"\t");
+				bufferWritter.write(data[i]+"\n");
 			bufferWritter.write("\n");
 			bufferWritter.close();
 		}

@@ -86,6 +86,24 @@ public class Rudiarius extends Gladiator
 		this.setEnd(this.getEnd() + 2.0);
 		this.setItl(this.getItl() + 2.0);
 	}
+	
+	/*
+	 * for writing and reading data
+	 * return a string of data representing the Rudiarius
+	 */
+	@Override
+	public String getData ()
+	{
+		String data = "";
+		data += this.getName() + "\t";
+		data += "Rudiarius\t";
+		data += this.getStr() + "\t";
+		data += this.getAgl() + "\t";
+		data += this.getEnd() + "\t";
+		data += this.getItl() + "\t";
+		data += this.getDeathRate();
+		return data;
+	}
 
 //	public static void main(String[] args)
 //	{

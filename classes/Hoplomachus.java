@@ -73,6 +73,24 @@ public class Hoplomachus extends Gladiator
 				"Endurance: " + getEnd() + "\n" +
 				"Intelligance: " + getItl());
 	}
+	
+	/*
+	 * for writing and reading data
+	 * return a string of data representing the Hoplomachus 
+	 */
+	@Override
+	public String getData ()
+	{
+		String data = "";
+		data += this.getName() + "\t";
+		data += "Hoplomachus\t";
+		data += this.getStr() + "\t";
+		data += this.getAgl() + "\t";
+		data += this.getEnd() + "\t";
+		data += this.getItl() + "\t";
+		data += this.getDeathRate();
+		return data;
+	}
 
 //	public static void main(String[] args)
 //	{
