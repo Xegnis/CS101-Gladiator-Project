@@ -21,6 +21,7 @@ public class GBSimulator
 	/* end */
 	
 	static String log = "";
+	static Fighter[] recruits = new Fighter[3];
 
 	public static void main(String[] args)
 	{
@@ -54,31 +55,37 @@ public class GBSimulator
 	 * return an array of randomly generated Fighters
 	 * have a chance of generating high-class gladiators
 	 */
-	public static Fighter [] generateRecruits ()
+	public static void generateRecruits ()
 	{
 		int number = 3;
-		Fighter [] recruits = new Fighter[number];
+		Fighter [] newRecruits = new Fighter[number];
 		for (int i = 0; i < number; i ++)
 		{
 			double roll = Math.random();
 			if (roll < 0.05)
 			{
-				recruits[i] = new Hoplomachus();
+				newRecruits[i] = new Hoplomachus();
 			}
 			else if (roll < 0.1)
 			{
-				recruits[i] = new Secutor();
+				newRecruits[i] = new Secutor();
 			}
 			else if (roll < 0.15)
 			{
-				recruits[i] = new Rudiarius();
+				newRecruits[i] = new Rudiarius();
 			}
 			else
 			{
-				recruits[i] = new Gladiator();
+				newRecruits[i] = new Gladiator();
 			}
 		}
-		return recruits;
+		recruits = newRecruits;
+	}
+	
+	/* recruit one of the three recruits */
+	public static void recruit (int num)
+	{
+		addFighter(recruits[num]);
 	}
 	
 	/*
