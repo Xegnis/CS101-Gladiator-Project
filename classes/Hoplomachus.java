@@ -61,6 +61,18 @@ public class Hoplomachus extends Gladiator
 	{
 		super(name, str, agl, end, itl, deathRate);
 	}
+	
+	@Override
+	public String toString ()
+	{
+		return ("Name: " + getName() + "\n" +
+				"Type: " + "Hoplomachus\n" +
+				"Ability: spectacular attributes\n" +
+				"Strength: " + getStr() + "\n" +
+				"Agility: " + getAgl() + "\n" +
+				"Endurance: " + getEnd() + "\n" +
+				"Intelligance: " + getItl());
+	}
 
 //	public static void main(String[] args)
 //	{

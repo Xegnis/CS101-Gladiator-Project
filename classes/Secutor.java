@@ -62,10 +62,21 @@ public class Secutor extends Gladiator
 	{
 		super(name, str, agl, end, itl, deathRate);
 	}
-
-	public static void main(String[] args)
+	
+	public String toString ()
 	{
-		Secutor h = new Secutor();
-		System.out.println (h);
+		return ("Name: " + getName() + "\n" +
+				"Type: " + "Secutor\n" +
+				"Ability: impossible to die in battle\n" +
+				"Strength: " + getStr() + "\n" +
+				"Agility: " + getAgl() + "\n" +
+				"Endurance: " + getEnd() + "\n" +
+				"Intelligance: " + getItl());
 	}
+
+//	public static void main(String[] args)
+//	{
+//		Secutor h = new Secutor();
+//		System.out.println (h);
+//	}
 }
