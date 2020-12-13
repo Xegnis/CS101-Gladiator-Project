@@ -21,6 +21,12 @@ public abstract class Fighter
 	private String name;
 	
 	private static double defaultStd = 1.0;
+	private static String [] names = {
+									"Kinan", "Romulus", "Eran", "Tyvarius", "Simarion", "QyaJi", "Uri",
+									"Mikhail", "Montiago", "Nyrilius", "Samtan", "Syna", "Adrastus",
+									"Eros", "Atlas", "Adonis", "Astor", "Knox", "Kai", "Zyan", "Remus",
+									"Liber", "Billy", "Amiya", "Arjan", "Cameron", "Nick", "Tye", "Calix", "Amol"
+									};
 	
 	private static Random normal = new Random();
 
@@ -28,16 +34,16 @@ public abstract class Fighter
 	
 	public Fighter ()
 	{
-		this(new String("default"), 5.0, 5.0, 5.0, 5.0);
+		this(5.0, 5.0, 5.0, 5.0);
 	}
 	
 	/*
 	 * create a Fighter object with attributes normally distributed
 	 * with the designated values as means and a standard deviation of defaultStd;
 	*/
-	public Fighter (String name, double str, double agl, double end, double itl)
+	public Fighter (double str, double agl, double end, double itl)
 	{
-		this.name = name;
+		this.name = randomName();
 		this.str = roundAtr(str + normal.nextGaussian() * defaultStd);
 		this.agl = roundAtr(agl + normal.nextGaussian() * defaultStd);
 		this.end = roundAtr(end + normal.nextGaussian() * defaultStd);
@@ -48,9 +54,9 @@ public abstract class Fighter
 	 * create a Fighter object with attributes normally distributed
 	 * with the designated values as means and a standard deviation of std
 	*/
-	public Fighter (String name, double str, double agl, double end, double itl, double std)
+	public Fighter (double str, double agl, double end, double itl, double std)
 	{
-		this.name = name;
+		this.name = randomName();
 		this.str = roundAtr(str + normal.nextGaussian() * std);
 		this.agl = roundAtr(agl + normal.nextGaussian() * std);
 		this.end = roundAtr(end + normal.nextGaussian() * std);
@@ -60,7 +66,7 @@ public abstract class Fighter
 	/* Behaviors */
 	
 	//contain and round doubles to 1 decimal place and for attribute use
-	public static double roundAtr (double atr)
+	public double roundAtr (double atr)
 	{
 		double rounded = (double)Math.round(atr * 10) / 10.0;
 		if (rounded > 10.0)
@@ -72,6 +78,12 @@ public abstract class Fighter
 			rounded = 0.0;
 		}
 		return rounded;
+	}
+	
+	/* return a random name from names */
+	public static String randomName ()
+	{
+		return names[(int)Math.random() * names.length];
 	}
 	
 	/*
