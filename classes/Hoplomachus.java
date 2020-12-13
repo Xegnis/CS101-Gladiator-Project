@@ -5,6 +5,7 @@
 
 public class Hoplomachus extends Gladiator
 {
+	private static double defaultDeathRate = 0.5;
 	private static double defaultStd = 0.8;
 	
 	/*
@@ -13,25 +14,28 @@ public class Hoplomachus extends Gladiator
 	*/
 	public Hoplomachus ()
 	{
-		super(12.0, 12.0, 12.0, 12.0, defaultStd);
+		super(12.5, 12.5, 12.5, 12.5, defaultStd);
+		this.setDeathRate(defaultDeathRate);
 	}
 	
 	/*
 	 * create a Hoplomachus object with attributes normally distributed
 	 * with the designated values as means and a standard deviation of defaultStd;
 	*/
-	public Hoplomachus (String name, double str, double agl, double end, double itl)
+	public Hoplomachus (double str, double agl, double end, double itl)
 	{
 		super(str, agl, end, itl, defaultStd);
+		this.setDeathRate(defaultDeathRate);
 	}
 	
 	/*
 	 * create a Hoplomachus object with attributes normally distributed
 	 * with the designated values as means and a standard deviation of std
 	*/
-	public Hoplomachus (String name, double str, double agl, double end, double itl, double std)
+	public Hoplomachus (double str, double agl, double end, double itl, double std)
 	{
 		super(str, agl, end, itl, std);
+		this.setDeathRate(defaultDeathRate);
 	}
 	
 	/* control the range of attributes (no more than 15, no less than 10) */
@@ -45,14 +49,24 @@ public class Hoplomachus extends Gladiator
 		}
 		else if (rounded < 10.0)
 		{
-			rounded = 0.0;
+			rounded = 10.0;
 		}
 		return rounded;
 	}
+	
+	/*
+	 * for writing and reading data
+	 * directly assign values to create a Hoplomachus object 
+	 */
+	public Hoplomachus (String name, double str, double agl, double end, double itl, double deathRate)
+	{
+		super(name, str, agl, end, itl, deathRate);
+	}
 
-//	public static void main(String[] args)
-//	{
-//		
-//	}
+	public static void main(String[] args)
+	{
+		Hoplomachus h = new Hoplomachus();
+		System.out.println (h);
+	}
 
 }

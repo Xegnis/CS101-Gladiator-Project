@@ -63,6 +63,19 @@ public abstract class Fighter
 		this.itl = roundAtr(itl + normal.nextGaussian() * std);
 	}
 	
+	/*
+	 * for writing and reading data
+	 * directly assign values to create a Fighter object 
+	 */
+	public Fighter (String name, double str, double agl, double end, double itl)
+	{
+		this.name = name;
+		this.str = str;
+		this.agl = agl;
+		this.end = end;
+		this.itl = itl;
+	}
+	
 	/* Behaviors */
 	
 	//contain and round doubles to 1 decimal place and for attribute use
@@ -270,8 +283,8 @@ public abstract class Fighter
 	}
 	
 	
-//	public static void main (String[] args)
-//	{
+	public static void main (String[] args)
+	{
 //		Fighter f1 = new Fighter();
 //		Fighter f2 = new Fighter("Fighter 2", 5, 5, 5, 5);
 //		Fighter f3 = new Fighter("Fighter 3", 2, 3, 4, 5, 10);
@@ -297,5 +310,7 @@ public abstract class Fighter
 //		System.out.println(Fighter.number);
 //		f3.die();
 //		System.out.println(Fighter.number);
-//	}
+		
+		System.out.println(randomName());
+	}
 }
