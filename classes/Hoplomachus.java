@@ -14,7 +14,7 @@ public class Hoplomachus extends Gladiator
 	*/
 	public Hoplomachus ()
 	{
-		super(12.5, 12.5, 12.5, 12.5, defaultStd);
+		super(12.0, 12.0, 12.0, 12.0, defaultStd);
 		this.setDeathRate(defaultDeathRate);
 	}
 	
@@ -35,7 +35,6 @@ public class Hoplomachus extends Gladiator
 	public Hoplomachus (double str, double agl, double end, double itl, double std)
 	{
 		super(str, agl, end, itl, std);
-		this.setDeathRate(defaultDeathRate);
 	}
 	
 	/* control the range of attributes (no more than 15, no less than 10) */
@@ -49,7 +48,7 @@ public class Hoplomachus extends Gladiator
 		}
 		else if (rounded < 10.0)
 		{
-			rounded = 10.0;
+			rounded = 0.0;
 		}
 		return rounded;
 	}
@@ -63,10 +62,9 @@ public class Hoplomachus extends Gladiator
 		super(name, str, agl, end, itl, deathRate);
 	}
 
-	public static void main(String[] args)
-	{
-		Hoplomachus h = new Hoplomachus();
-		System.out.println (h);
-	}
+//	public static void main(String[] args)
+//	{
+//		
+//	}
 
 }
