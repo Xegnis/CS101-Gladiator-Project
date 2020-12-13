@@ -25,14 +25,17 @@ public class GBSimulator
 	public static void main(String[] args)
 	{
 //		Fighter[] fighters = generateRecruits();
-		fillWithGladiators(3);
+//		fillWithGladiators(3);
 //		for (int i = 0; i < 3; i ++)
 //		{
 //			System.out.println(fighters[i]);
 //		}
-		clearLog();
-		System.out.println(Arrays.toString(readFromTabDelimitedFile("GenData.txt")));
-		System.out.println(Arrays.toString(readFromTabDelimitedFile("FighterData.txt")));
+//		clearLog();
+//		System.out.println(Arrays.toString(readFromTabDelimitedFile("GenData.txt")));
+//		System.out.println(Arrays.toString(readFromTabDelimitedFile("FighterData.txt")));
+//		readData();
+//		System.out.println(number + " " + gold);
+//		System.out.println(Arrays.toString(fighters));
 	}
 	
 	/*
@@ -131,36 +134,49 @@ public class GBSimulator
 	}
 	
 	/* convert all written data back into program data */
-//	public static void readData ()
-//	{
-//		String [] genData = readFromTabDelimitedFile("GenData.txt");
-//		String [] fighterData = readFromTabDelimitedFile("FighterData.txt");
-//		
-//		for (int i = 0; i < maxFighter; i ++)
-//		{
-//			if (!(fighterData[i].equals("null")))
-//			{
-//				String [] data = fighterData[i].split("\t");
-//				if (data[1].equals("Hoplomachus"))
-//				{
-//					addFighter(new Hoplomachus(data[0], Integer.parseInt(data[2]), Integer.parseInt(data[3]), 
-//								Integer.parseInt(data[4], Integer.parseInt(data[5], Integer.parseInt(data[6]));
-//				}
-//				else if (data[1].equals("Secutor"))
-//				{
-//					
-//				}
-//				else if (data[1].equals("Rudiarius"))
-//				{
-//					
-//				}
-//				else
-//				{
-//					
-//				}
-//			}
-//		}
-//	}
+	public static void readData ()
+	{
+		number = 0;
+		gold = 0;
+		for (int i = 0; i < fighters.length; i ++)
+		{
+			fighters[i] = null;
+		}
+		
+		String [] genData = readFromTabDelimitedFile("GenData.txt");
+		String [] fighterData = readFromTabDelimitedFile("FighterData.txt");
+		
+		for (int i = 0; i < fighters.length; i ++)
+		{
+			if (!(fighterData[i].equals("null")))
+			{
+				String [] data = fighterData[i].split("\t");
+				if (data[1].equals("Hoplomachus"))
+				{
+					addFighter(new Hoplomachus(data[0], Double.parseDouble(data[2]), Double.parseDouble(data[3]), 
+							Double.parseDouble(data[4]), Double.parseDouble(data[5]), Double.parseDouble(data[6])));
+				}
+				else if (data[1].equals("Secutor"))
+				{
+					addFighter(new Secutor(data[0], Double.parseDouble(data[2]), Double.parseDouble(data[3]), 
+							Double.parseDouble(data[4]), Double.parseDouble(data[5]), Double.parseDouble(data[6])));
+				}
+				else if (data[1].equals("Rudiarius"))
+				{
+					addFighter(new Rudiarius(data[0], Double.parseDouble(data[2]), Double.parseDouble(data[3]), 
+							Double.parseDouble(data[4]), Double.parseDouble(data[5]), Double.parseDouble(data[6])));
+				}
+				else
+				{
+					addFighter(new Gladiator(data[0], Double.parseDouble(data[2]), Double.parseDouble(data[3]), 
+							Double.parseDouble(data[4]), Double.parseDouble(data[5]), Double.parseDouble(data[6])));
+				}
+			}
+		}
+		
+		number = Integer.parseInt(genData[0]);
+		gold = Integer.parseInt(genData[1]);
+	}
 	
 	/* use this method to add a fighter to fighters */
 	public static void addFighter(Fighter f)
