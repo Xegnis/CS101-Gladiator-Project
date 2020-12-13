@@ -96,7 +96,7 @@ public abstract class Fighter
 	/* return a random name from names */
 	public static String randomName ()
 	{
-		return names[(int)Math.random() * names.length];
+		return names[((int) (Math.random() * names.length))];
 	}
 	
 	/*
@@ -282,35 +282,21 @@ public abstract class Fighter
 		return gold;
 	}
 	
+	/*
+	 * train a fighter
+	 * increase all of the attributes by 1
+	 */
+	public void train ()
+	{
+		this.setStr(this.getStr() + 1.0);
+		this.setAgl(this.getAgl() + 1.0);
+		this.setEnd(this.getEnd() + 1.0);
+		this.setItl(this.getItl() + 1.0);
+	}
+	
 	
 	public static void main (String[] args)
 	{
-//		Fighter f1 = new Fighter();
-//		Fighter f2 = new Fighter("Fighter 2", 5, 5, 5, 5);
-//		Fighter f3 = new Fighter("Fighter 3", 2, 3, 4, 5, 10);
-//		
-//		f1.setName("Fighter 1");
-//		f2.setAtr(5, 5, 5, 5);
-//		
-//		System.out.println(f1);
-//		System.out.println();
-//		System.out.println(f2);
-//		System.out.println();
-//		System.out.println(f3);
-//		System.out.println(f3.getAtr()[0]);
-//		System.out.println();
-//		
-//		for (int i = 0; i < 10; i ++)
-//		{
-//			f1.setAtrNormal(5, 5, 5, 5);
-//			System.out.println(f1);
-//			System.out.println();
-//		}
-//		
-//		System.out.println(Fighter.number);
-//		f3.die();
-//		System.out.println(Fighter.number);
-		
-		System.out.println(randomName());
+//		System.out.println(randomName());
 	}
 }
