@@ -57,6 +57,7 @@ FXCollections.observableArrayList(
             public void handle(ActionEvent e) {
 
                 //Whatever we need to do
+                // Add gladiator #1 to the list of gladiators that the person has. 
 
             }
         });
@@ -67,7 +68,7 @@ FXCollections.observableArrayList(
             public void handle(ActionEvent e) {
 
                 //Whatever we need to do
-
+                // THis should add gladiator #2 to the list of gladiators that the person has
             }
         });
 
@@ -77,6 +78,7 @@ FXCollections.observableArrayList(
             public void handle(ActionEvent e) {
 
                //Whatever we need to do
+                // So this should add the gladiator #3 to the list of gladiators that the person has
 
             }
         });
