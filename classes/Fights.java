@@ -34,6 +34,8 @@ public class Fights extends Application {
 
             Label label = new Label("Fights");
             label.setFont(new Font("Arial", 20));
+            
+            GBSimulator.readData();
 
             table.setEditable(true);
 
