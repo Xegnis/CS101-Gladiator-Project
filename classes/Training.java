@@ -26,7 +26,8 @@ public class Training extends Application{
     TableView<Trainer> table = new TableView<Trainer>();
     Trainer[] glads = {new Trainer(2, 5),new Trainer(2, 5),
             new Trainer(2, 5)};
-
+// So right now this is hardcoded, but ideally this would take the gladiators that the user has and use that for the observable List on line 35. Then they
+    //could choose to upgrade one of those gladiators. 
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -70,6 +71,8 @@ public class Training extends Application{
                         FXCollections.observableArrayList(glads[i]);
                 table.setItems(dataGlad);
                 tablePane.getChildren().add(table);
+                
+                //This should then increase the stats of those gladiators that we use
             }
         });
 
