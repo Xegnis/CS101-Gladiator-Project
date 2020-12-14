@@ -93,6 +93,7 @@ public void start(Stage stage) throws RuntimeException{
                 addPlayerName.clear();
                 addPlayerGladiators.clear();
                 addPlayerBalance.clear();
+                //Not sure if we are using this, but when the player adds a gladiator, it should also pop up in the gladiators column
 
             }
         });
