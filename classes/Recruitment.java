@@ -29,57 +29,60 @@ FXCollections.observableArrayList(
     public void start(Stage stage) throws Exception {
         Scene scene = new Scene(new Group());
         stage.setTitle("Recruitment");
-        stage.setWidth(500);
+        stage.setWidth(800);
         stage.setHeight(500);
 
         Label label = new Label("Gladiators");
         label.setFont(new Font("Arial", 20));
 
         table.setEditable(true);
+        
+        GBSimulator.fillWithGladiators(3);
+        GBSimulator.generateRecruits();
 
-        TableColumn gladiatorNameCol = new TableColumn("Gladiator Type");
-        gladiatorNameCol.setMinWidth(200);
-        gladiatorNameCol.setCellValueFactory(new PropertyValueFactory<Fighter,
-               String>("nameGlad"));
+        TableColumn gladiator1Col = new TableColumn("Gladiator 1");
+        gladiator1Col.setMinWidth(200);
+        gladiator1Col.setCellValueFactory(new PropertyValueFactory<Fighter,
+               String>(GBSimulator.recruits[0].toString()));
 
-        TableColumn gladiatorAttrCol = new TableColumn("Attributes");
-        gladiatorAttrCol.setMinWidth(400);
-        gladiatorAttrCol.setCellValueFactory(new PropertyValueFactory<Fighter,String>
-                ("descriptionGlad"));
+        TableColumn gladiator2Col = new TableColumn("Gladiator 2");
+        gladiator2Col.setMinWidth(400);
+        gladiator2Col.setCellValueFactory(new PropertyValueFactory<Fighter,String>
+                (GBSimulator.recruits[1].toString()));
+        
+        TableColumn gladiator3Col = new TableColumn("Gladiator 3");
+        gladiator3Col.setMinWidth(600);
+        gladiator3Col.setCellValueFactory(new PropertyValueFactory<Fighter,String>
+                (GBSimulator.recruits[2].toString()));
 
-
+        /* Billy: I dont know what these lines do so Ill just leave them here */
         table.setItems(data);
-        table.getColumns().addAll(gladiatorNameCol, gladiatorAttrCol);
+        table.getColumns().addAll(gladiator1Col, gladiator2Col, gladiator3Col);
 
-        Button buyGlad1 = new Button("Buy Gladiator 1");
+        Button buyGlad1 = new Button("Buy Gladiator 1 | Cost: 100");
         buyGlad1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-
-                //Whatever we need to do
-                // Add gladiator #1 to the list of gladiators that the person has. 
-
+                GBSimulator.recruit(0);
+                GBSimulator.clearLog();
             }
         });
 
-        Button buyGlad2 = new Button("Buy Gladiator 2");
+        Button buyGlad2 = new Button("Buy Gladiator 2 | Cost: 100");
         buyGlad1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-
-                //Whatever we need to do
-                // THis should add gladiator #2 to the list of gladiators that the person has
+                GBSimulator.recruit(1);
+                GBSimulator.clearLog();
             }
         });
 
-        Button buyGlad3 = new Button("Buy Gladiator 3");
+        Button buyGlad3 = new Button("Buy Gladiator 3 | Cost: 100");
         buyGlad1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-
-               //Whatever we need to do
-                // So this should add the gladiator #3 to the list of gladiators that the person has
-
+            	GBSimulator.recruit(2);
+            	GBSimulator.clearLog();
             }
         });
 
