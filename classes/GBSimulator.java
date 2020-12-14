@@ -111,6 +111,7 @@ public class GBSimulator
 			writeToLog(f2.getName() + " died.");
 		}
 		gold += Fighter.winGold(f1, f2);
+		writeToLog("Current gold is " + gold);
 	}
 	
 	/* store information about gladiators in fighters to fighterData[] */
