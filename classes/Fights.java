@@ -74,6 +74,8 @@ public class Fights extends Application {
                     ));
                     addGladiator1.clear();
                     addGladiator2.clear();
+                    
+                    //So when this button is called, we need to call the fight method between the two inputted Gladiators
                 }
             });
 
