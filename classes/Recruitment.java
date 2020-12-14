@@ -38,6 +38,7 @@ FXCollections.observableArrayList(
         table.setEditable(true);
         
         GBSimulator.fillWithGladiators(3);
+        GBSimulator.clearLog();
         GBSimulator.generateRecruits();
 
         TableColumn gladiator1Col = new TableColumn("Gladiator 1");
@@ -46,12 +47,12 @@ FXCollections.observableArrayList(
                String>(GBSimulator.recruits[0].toString()));
 
         TableColumn gladiator2Col = new TableColumn("Gladiator 2");
-        gladiator2Col.setMinWidth(400);
+        gladiator2Col.setMinWidth(200);
         gladiator2Col.setCellValueFactory(new PropertyValueFactory<Fighter,String>
                 (GBSimulator.recruits[1].toString()));
         
         TableColumn gladiator3Col = new TableColumn("Gladiator 3");
-        gladiator3Col.setMinWidth(600);
+        gladiator3Col.setMinWidth(200);
         gladiator3Col.setCellValueFactory(new PropertyValueFactory<Fighter,String>
                 (GBSimulator.recruits[2].toString()));
 
