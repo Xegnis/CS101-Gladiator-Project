@@ -69,13 +69,26 @@ public class Fights extends Application {
                 @Override
                 public void handle(ActionEvent e) {
 
-                    data.add(new Fighters(addGladiator1.getText(),
-                            addGladiator2.getText()
-                    ));
+                    String name1 = addGladiator1.getText();
+                    String name2 = addGladiator2.getText();
                     addGladiator1.clear();
                     addGladiator2.clear();
                     
-                    //So when this button is called, we need to call the fight method between the two inputted Gladiators
+                    Fighter f1 = null, f2 = null;
+                    
+                    for (int i = 0; i < GBSimulator.fighters.length; i ++)
+                    {
+                    	if (GBSimulator.fighters[i].getName().equals(name1))
+                    	{
+                    		f1 = GBSimulator.fighters[i];
+                    	}
+                    	else if (GBSimulator.fighters[i].getName().equals(name2))
+                    	{
+                    		f2 = GBSimulator.fighters[i];
+                    	}
+                    }
+                    
+                    GBSimulator.battle(f1, f2);
                 }
             });
 
